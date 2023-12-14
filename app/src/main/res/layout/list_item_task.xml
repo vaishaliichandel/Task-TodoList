@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginVertical="@dimen/_5sdp"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="@dimen/_2sdp"
+        app:strokeColor="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp">
+
+            <LinearLayout
+                android:id="@+id/llTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/icPin"
+                    style="?attr/materialIconButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:minHeight="0dp"
+                    android:padding="0dp"
+                    android:rotation="315"
+                    android:visibility="gone"
+                    app:icon="@drawable/ic_filled_pin"
+                    app:iconTint="@color/colorPrimaryDark"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTask"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:textSize="@dimen/_12sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/icArrow"
+                    app:layout_constraintStart_toEndOf="@+id/materialCheckBox"
+                    app:layout_constraintTop_toTopOf="@+id/icPin"
+                    app:layout_constraintVertical_weight="1"
+                    tools:text="colorOnPrimary colorOnPrimary colorOnPrimary colorOnPrimary colorOnPrimary colorOnPrimary colorOnPrimary " />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/icStar"
+                    style="?attr/materialIconButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="0dp"
+                    android:padding="0dp"
+                    android:visibility="gone"
+                    app:icon="@drawable/ic_filled_star"
+                    app:iconTint="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/icDeleteTask"
+                    style="?attr/materialIconButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="0dp"
+                    android:padding="0dp"
+                    android:visibility="gone"
+                    app:icon="@drawable/ic_delete"
+                    app:iconTint="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
+
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/icArrow"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                app:icon="@drawable/ic_down_arrow"
+                app:iconTint="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="@id/llTask"
+                app:layout_constraintTop_toBottomOf="@id/llTask"
+                tools:visibility="visible" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/materialCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llTask" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:background="@drawable/bg_layout"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_5sdp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintCircleRadius="@dimen/_5sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:visibility="visible">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvStartDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorSecondaryVariant"
+                    android:drawableStart="@drawable/ic_calendar"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:maxLines="3"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    app:cornerRadius="@dimen/_5sdp"
+                    tools:text="28 Nov , 23" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvEndDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:backgroundTint="@color/colorSecondaryVariant"
+                    android:drawableStart="@drawable/ic_calender_tick"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:maxLines="3"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    app:cornerRadius="@dimen/_5sdp"
+                    app:iconTint="@color/black"
+                    app:layout_constraintCircleRadius="@dimen/_5sdp"
+                    app:layout_constraintStart_toEndOf="@+id/materialCheckBox"
+                    app:layout_constraintTop_toBottomOf="@+id/tvStartDate"
+                    tools:text="28 Nov , 23" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tvNotifyDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/lightTeal"
+                android:minHeight="0dp"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:visibility="gone"
+                app:cornerRadius="@dimen/_5sdp"
+                app:icon="@drawable/ic_notification"
+                app:iconTint="@color/black"
+                app:layout_constraintCircleRadius="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/icArrow"
+                tools:text="28 Nov , 23 10:23 AM"
+                tools:visibility="visible" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tvCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/darkTeal"
+                android:minHeight="0dp"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10sdp"
+                android:visibility="gone"
+                app:cornerRadius="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+                app:layout_constraintCircleRadius="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvNotifyDate"
+                tools:text="28 Nov , 23 10:23 AM"
+                tools:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
