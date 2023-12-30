@@ -307,6 +307,7 @@ class MainActivity : AppCompatActivity(), OnClickListener, DataInsertionListener
         Log.e("data", data.task)
         taskList.add(data)
         mainAdapter.notifyItemInserted(taskList.size)
+        checkEmptyTask()
     }
 
     override fun onDataFilter(data: Category) {
