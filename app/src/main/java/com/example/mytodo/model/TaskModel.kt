@@ -20,3 +20,12 @@ data class TaskModel(
     @ColumnInfo val notes: String = "",
     @ColumnInfo val attachments: ArrayList<String>?,
 ) : Serializable
+
+@Entity(tableName = "category_table")
+data class Category(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @ColumnInfo val name: String,
+    @ColumnInfo val color: Int,
+    @ColumnInfo var isHide: Int = 0,
+    @ColumnInfo var position: Int = 0
+)

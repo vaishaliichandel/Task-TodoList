@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@drawable/bg_layout"
+    android:backgroundTint="@color/darkTeal"
+    android:elevation="@dimen/_5sdp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvEdit"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        android:text="Edit"
+        android:textColor="@color/white"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_11sdp" />
+
+    <TextView
+        android:id="@+id/tvHide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_5sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:text="Hide"
+        android:textColor="@color/white"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_11sdp" />
+
+    <TextView
+        android:id="@+id/tvShow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_5sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:text="Show"
+        android:visibility="gone"
+        android:textColor="@color/white"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_11sdp" />
+
+    <TextView
+        android:id="@+id/tvDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:text="Delete"
+        android:textColor="@color/white"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_11sdp" />
+
+</LinearLayout>

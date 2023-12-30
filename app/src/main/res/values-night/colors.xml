@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FFFFFF</color>
+    <color name="white">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorPrimary">#E1E1FF</color>
+    <color name="colorOnPrimary">#091149</color>
+    <color name="colorPrimaryVariant">#0000FF</color>
+    <color name="colorPrimaryDark">#F1E2FF</color>
+    <color name="colorAccent">#4D4DFF</color>
+    <color name="colorSecondary">#000037</color>
+    <color name="colorOnSecondary">#DAFBFF</color>
+    <color name="colorSecondaryVariant">#FFFFFFFF</color>
+    <color name="colorBlue">#002AFF</color>
+    <color name="lightBlue">#000037</color>
+    <color name="darkTeal">#CEF9FF</color>
+    <color name="lightTeal">#044049</color>
+    <color name="bg_todo">#3D3D5E</color>
+    <color name="bg_menu">#F1E2FF</color>
+    <color name="bg_top">#000037</color>
+    <color name="bg_item">#212143</color>
+    <color name="colorGray">#4C4C4C</color>
+
+</resources>

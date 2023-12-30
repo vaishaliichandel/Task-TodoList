@@ -1,7 +1,10 @@
-package com.example.mytodo.ui.main
+package com.example.mytodo.ui.newTask
 
+import android.annotation.SuppressLint
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.ClipData
-import android.content.ClipDescription.MIMETYPE_TEXT_PLAIN
+import android.content.ClipDescription
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
@@ -10,31 +13,29 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.CompoundButton
-import android.widget.LinearLayout
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.mytodo.R
 import com.example.mytodo.database.TaskDatabase
 import com.example.mytodo.database.repository.TaskRepository
-import com.example.mytodo.databinding.ActivityMainBinding
 import com.example.mytodo.databinding.BottomShitCreateTaskBinding
+import com.example.mytodo.model.Category
 import com.example.mytodo.model.SubTaskModel
 import com.example.mytodo.model.TaskModel
-import com.example.mytodo.ui.subTask.SubTaskActivity
-import com.example.mytodo.utils.TaskClickListener
+import com.example.mytodo.ui.category.CategoryNameAdapter
+import com.example.mytodo.ui.taskLists.MainViewModel
+import com.example.mytodo.utils.CategoryListener
+import com.example.mytodo.utils.DataInsertionListener
+import com.example.mytodo.utils.MyReceiver
 import com.example.mytodo.utils.gone
 import com.example.mytodo.utils.visible
 import com.example.mytodo.viewModelFectory.ViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.android.material.textview.MaterialTextView
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import java.text.SimpleDateFormat
@@ -44,155 +45,14 @@ import java.util.Locale
 import java.util.TimeZone
 
 
-class MainActivity : AppCompatActivity(), OnClickListener {
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var mainAdapter: MainAdapter
-    private lateinit var viewModel: MainViewModel
-    private var isFavorite = true
-    private val taskList = ArrayList<TaskModel>()
-    private val favTaskList = ArrayList<TaskModel>()
-    private val modalBottomSheet = AddTaskBottomSheet()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        initView()
-        observer()
-        clickListeners()
-    }
-
-    private fun observer() {
-        viewModel.getAllUsers().observe(this) { task ->
-            mainAdapter.addAll(task.toSet())
-            favTaskList.addAll(task.toSet())
-        }
-    }
-
-    private fun clickListeners() {
-        binding.run {
-            fabAdd.setOnClickListener(this@MainActivity)
-            bottomAppBar.setOnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    R.id.accelerator -> {
-                        if (isFavorite) {
-                            mainAdapter.addAll(favTaskList.filter { it.isFavorite == 1 }.toSet())
-                            item.setIcon(R.drawable.ic_filled_star)
-                        } else {
-                            mainAdapter.addAll(favTaskList.toSet())
-                            item.setIcon(R.drawable.ic_unfilled_star)
-                        }
-                        isFavorite = !isFavorite
-                    }
-                }
-                true
-            }
-        }
-        mainAdapter.setOnClickListener(object : TaskClickListener {
-            override fun onItemClick(position: Int, view: View, model: TaskModel) {
-                startActivity(
-                    Intent(
-                        this@MainActivity,
-                        SubTaskActivity::class.java
-                    ).putExtra("TASK_DATA", model)
-                )
-
-            }
-
-            override fun onItemCheckedListener(
-                adapterPosition: Int,
-                buttonView: CompoundButton,
-                isChecked: Boolean,
-                itemView: TaskModel
-            ) {
-                itemView.let { it.isTaskDone = if (isChecked) 1 else 0 }
-                viewModel.updateUser(itemView)
-                mainAdapter.displayList[adapterPosition].isTaskDone = if (isChecked) 1 else 0
-            }
-
-
-            override fun onItemClickDelete(position: Int, view: View, model: TaskModel) {
-                viewModel.deleteUser(model)
-                mainAdapter.removeAt(position)
-            }
-
-            override fun onItemClickExpand(
-                position: Int,
-                tvStartDate: View,
-                linearLayout: LinearLayout,
-                tvEndDate: MaterialTextView,
-                tvNotifyDate: MaterialButton,
-                tvCategory: MaterialButton,
-                icArrow: MaterialButton,
-                item: TaskModel
-            ) {
-                mainAdapter.isExpand = !mainAdapter.isExpand
-                tvStartDate.visibility =
-                    if (mainAdapter.isExpand && item.startDate.isNotEmpty()) View.VISIBLE else View.GONE
-                tvCategory.visibility =
-                    if (mainAdapter.isExpand && item.category.isNotEmpty()) View.VISIBLE else View.GONE
-                tvEndDate.visibility =
-                    if (mainAdapter.isExpand && item.endDate.isNotEmpty()) View.VISIBLE else View.GONE
-                tvNotifyDate.visibility =
-                    if (mainAdapter.isExpand && item.notifyTime.isNotEmpty()) View.VISIBLE else View.GONE
-                icArrow.rotation = if (mainAdapter.isExpand) 180F else 360F
-                linearLayout.visibility =
-                    if (mainAdapter.isExpand && tvStartDate.isVisible || tvEndDate.isVisible) View.VISIBLE else View.GONE
-            }
-        })
-    }
-
-    private fun initView() {
-        val repository = TaskRepository(TaskDatabase.getInstance(this).taskDao())
-        val viewModelFactory = ViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
-        taskList.addAll(viewModel.getAllTaskLocal().toSet())
-
-        mainAdapter = MainAdapter(taskList)
-        binding.run {
-            rvTask.adapter = mainAdapter
-//            fabAdd.setColorFilter(
-//                ContextCompat.getColor(
-//                    this@MainActivity,
-//                    R.color.colorPrimaryDark
-//                )
-//            )
-            val c = Calendar.getInstance()
-            when (c.get(Calendar.HOUR_OF_DAY)) {
-                in 0..11 -> {
-                    mtvWelcome.text = getString(R.string.hello_good_morning)
-                }
-
-                in 12..15 -> {
-                    mtvWelcome.text = getString(R.string.hello_good_afternoon)
-                }
-
-                in 16..20 -> {
-                    mtvWelcome.text = getString(R.string.hello_good_evening)
-                }
-
-                else -> {}
-            }
-            val df = SimpleDateFormat("EEE, MMM d", Locale.getDefault())
-            val formattedDate: String = df.format(c.time)
-            mtvTime.text = formattedDate
-        }
-
-    }
-
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.fabAdd -> modalBottomSheet.show(supportFragmentManager, "ModalBottomSheet")
-        }
-    }
-}
-
 class AddTaskBottomSheet : BottomSheetDialogFragment() {
     private lateinit var binding1: BottomShitCreateTaskBinding
     private lateinit var viewModel: MainViewModel
-    private var categoryList = arrayOf("Home", "School", "Work", "Personal", "Other")
+    private var categoryList = ArrayList<Category>()
     private lateinit var taskModel: TaskModel
     private val subTaskList = ArrayList<SubTaskModel>()
     private val attachments = ArrayList<String>()
+    private var dataInsertionListener: DataInsertionListener? = null
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreateView(
@@ -204,11 +64,10 @@ class AddTaskBottomSheet : BottomSheetDialogFragment() {
         if (arguments?.containsKey("taskData") == true) {
             taskModel = (arguments?.getSerializable("taskData") as TaskModel?)!!
             binding1.run {
-                createTask.text = "Update Task"
+                createTask.text = getString(R.string.update_task)
                 etTask.setText(taskModel.task)
                 mbStartDate.text = taskModel.startDate
                 mbEndDate.text = taskModel.endDate
-                tvCategory.setText(taskModel.category)
                 icAddDateTime.text = taskModel.notifyTime
                 icAddStar.isChecked = taskModel.isFavorite == 1
                 icPin.isChecked = taskModel.isPined == 1
@@ -219,13 +78,33 @@ class AddTaskBottomSheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ArrayList<SubTaskModel>()
         val repository = TaskRepository(TaskDatabase.getInstance(requireContext()).taskDao())
         val viewModelFactory = ViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
-//        setBottomShitBackground()
+        if (viewModel.getAllCate().isEmpty()) {
+            categoryList.add(Category(name = "Home", color = R.color.colorHome))
+            categoryList.add(Category(name = "Personal", color = R.color.colorPersonal))
+            categoryList.add(Category(name = "School", color = R.color.colorSchool))
+            categoryList.add(Category(name = "Work", color = R.color.colorWork))
+        }
+        categoryList.addAll(viewModel.getAllCate().filter { it.isHide == 0 })
+        val adapter = CategoryNameAdapter(
+            requireContext(),
+            R.layout.layout_edittext, R.id.tvName, categoryList
+        )
         binding1.run {
-            tvCategory.setSimpleItems(categoryList)
+            tvCategory.setAdapter(adapter)
+            adapter.clickListener(object : CategoryListener {
+                override fun clickListener(category: Category, adapterPosition: Int, view: View) {
+                    binding1.tvCategory.setText(category.name)
+                }
+                override fun clickItemListener(
+                    category: Category,
+                    adapterPosition: Int,
+                    view: View
+                ) {}
+            })
+
             mbStartDate.setOnClickListener {
                 openStartDateDialog(binding1.mbStartDate)
             }
@@ -250,10 +129,25 @@ class AddTaskBottomSheet : BottomSheetDialogFragment() {
                 icClose.gone()
             }
             createTask.setOnClickListener {
-                createTask(binding1)
-                dismiss()
+                if (binding1.etTask.text?.isEmpty() == true) {
+                    binding1.etTask.error = "Please enter task"
+                } else {
+                    createTask(binding1)
+                    dismiss()
+                }
             }
         }
+    }
+
+    fun setListener(listener: DataInsertionListener) {
+        dataInsertionListener = listener
+    }
+    private fun onDataInserted(data: TaskModel) {
+        dataInsertionListener?.onDataInserted(data)
+
+    }
+    private fun insertData(data: TaskModel) {
+        onDataInserted(data)
     }
 
     private fun createTask(binding1: BottomShitCreateTaskBinding) {
@@ -293,15 +187,61 @@ class AddTaskBottomSheet : BottomSheetDialogFragment() {
                         attachments = attachments
                     )
                 )
+                if (icAddDateTime.text.isNotEmpty()) {
+                    scheduleNotification(icAddDateTime.text.toString(), etTask.text.toString())
+                }
+                insertData(
+                    TaskModel(
+                        task = etTask.text.toString(),
+                        startDate = if (mbStartDate.text.isEmpty()) formattedDate else mbStartDate.text.toString(),
+                        endDate = mbEndDate.text.toString(),
+                        category = tvCategory.text.toString(),
+                        notifyTime = icAddDateTime.text.toString(),
+                        isPined = if (icAddStar.isChecked) 1 else 0,
+                        isFavorite = if (icAddStar.isChecked) 1 else 0,
+                        subClass = subTaskList,
+                        attachments = attachments
+                    )
+                )
             }
         }
+    }
+
+    @SuppressLint("ScheduleExactAlarm")
+    private fun scheduleNotification(dateString: String, taskName: String) {
+        val format = SimpleDateFormat("dd MMM yyyy h:mm a", Locale.ENGLISH)
+        val date = format.parse(dateString)
+        val calendar: Calendar = Calendar.getInstance()
+        calendar.time = date!!
+        calendar.get(Calendar.HOUR_OF_DAY) // Replace with your desired hour
+        calendar.get(Calendar.MINUTE) // Replace with your desired minute
+        calendar.get(Calendar.SECOND)
+        Log.e("calendar", "${calendar.timeInMillis} ${calendar.time}")
+        val alarmManager =
+            context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        val intent = Intent(requireContext(), MyReceiver::class.java)
+        intent.action = "MY_NOTIFICATION_MESSAGE"
+        intent.putExtra("TASK_NAME", taskName)
+        val pendingIntent = PendingIntent.getBroadcast(
+            requireContext(),
+            0,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
+        alarmManager.setExactAndAllowWhileIdle(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            pendingIntent
+        )
     }
 
     private fun pasteTask(binding1: BottomShitCreateTaskBinding) {
         val clipboard =
             requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager?
         val pasteData: String
-        if (clipboard?.primaryClipDescription!!.hasMimeType(MIMETYPE_TEXT_PLAIN)) {
+        if (clipboard?.primaryClipDescription!!.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
             val item = clipboard.primaryClip!!.getItemAt(0)
             pasteData = item.text.toString()
             binding1.etTask.setText(pasteData)
@@ -400,8 +340,6 @@ class AddTaskBottomSheet : BottomSheetDialogFragment() {
         }
         startDate.show(parentFragmentManager, TAG)
     }
-
-
     companion object {
         const val TAG = "ModalBottomSheet"
     }

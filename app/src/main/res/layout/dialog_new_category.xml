@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_10sdp">
+
+    <TextView
+        android:id="@+id/tvCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Create new category"
+        android:textColor="@color/black"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/bg_layout"
+        android:backgroundTint="@color/colorGray"
+        android:gravity="top"
+        android:maxLength="50"
+        android:maxLines="2"
+        android:minHeight="@dimen/_60sdp"
+        android:padding="@dimen/_7sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_11sdp"
+        app:layout_constraintTop_toBottomOf="@+id/tvCategory"
+        tools:layout_editor_absoluteX="13dp" />
+
+    <TextView
+        android:id="@+id/tvCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:text="0/50"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="@+id/editText" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Category color"
+        android:textColor="@color/black"
+        android:textFontWeight="500"
+        app:layout_constraintStart_toStartOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <TextView
+        android:id="@+id/tvDefault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_3sdp"
+        android:alpha="0.4"
+        android:text="Default"
+        android:textColor="@color/black"
+        android:textFontWeight="500"
+        app:layout_constraintEnd_toStartOf="@+id/ic1"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ic1"
+        style="?attr/materialIconButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="0dp"
+        android:padding="0dp"
+        app:icon="@drawable/ic_dot"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/rb1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:button="@drawable/radio_selector"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:buttonTint="@color/colorHome" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/rb2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:button="@drawable/radio_selector"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:buttonTint="@color/colorPersonal" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/rb3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:button="@drawable/radio_selector"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:buttonTint="@color/colorSchool" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/rb4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:button="@drawable/radio_selector"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:buttonTint="@color/colorWork" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/rb5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:button="@drawable/radio_selector"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:buttonTint="@color/color6" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/rb6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_3sdp"
+            android:button="@drawable/radio_selector"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:buttonTint="@color/color5" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvColor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_3sdp"
+        android:alpha="0.4"
+        android:text="The color will be help you to remember task category "
+        android:textColor="@color/black"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintEnd_toStartOf="@+id/ic1"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup2"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+    <!--    <com.google.android.material.button.MaterialButton-->
+    <!--        android:id="@+id/ic2"-->
+    <!--        style="?attr/materialIconButtonStyle"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:minHeight="0dp"-->
+    <!--        android:padding="0dp"-->
+    <!--        app:icon="@drawable/ic_dot"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/textView3" />-->
+
+    <!--    <com.google.android.material.button.MaterialButton-->
+    <!--        android:id="@+id/ic3"-->
+    <!--        style="?attr/materialIconButtonStyle"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:minHeight="0dp"-->
+    <!--        android:padding="0dp"-->
+    <!--        app:icon="@drawable/ic_dot"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/ic2"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/ic2"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/ic2" />-->
+
+    <!--    <com.google.android.material.button.MaterialButton-->
+    <!--        android:id="@+id/ic4"-->
+    <!--        style="?attr/materialIconButtonStyle"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:minHeight="0dp"-->
+    <!--        android:padding="0dp"-->
+    <!--        app:icon="@drawable/ic_dot"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/ic3"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/ic3"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/textView3" />-->
+
+    <!--    <com.google.android.material.button.MaterialButton-->
+    <!--        android:id="@+id/ic5"-->
+    <!--        style="?attr/materialIconButtonStyle"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:minHeight="0dp"-->
+    <!--        android:padding="0dp"-->
+    <!--        app:icon="@drawable/ic_dot"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/ic4"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/ic4"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/ic4" />-->
+
+    <!--    <com.google.android.material.button.MaterialButton-->
+    <!--        android:id="@+id/ic6"-->
+    <!--        style="?attr/materialIconButtonStyle"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:minHeight="0dp"-->
+    <!--        android:padding="0dp"-->
+    <!--        app:icon="@drawable/ic_dot"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/ic5"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/ic5"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/ic5" />-->
+
+    <!--    <com.google.android.material.button.MaterialButton-->
+    <!--        android:id="@+id/ic7"-->
+    <!--        style="?attr/materialIconButtonStyle"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:minHeight="0dp"-->
+    <!--        android:padding="0dp"-->
+    <!--        app:icon="@drawable/ic_dot"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/ic6"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/ic6"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/ic6" />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

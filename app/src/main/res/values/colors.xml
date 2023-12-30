@@ -2,10 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorWhite">#FFFFFF</color>
     <color name="colorPrimary">#000066</color>
-    <color name="colorOnPrimary">#FFFFFFFF</color>
+    <color name="colorOnPrimary">#B2B8DA</color>
     <color name="colorPrimaryVariant">#0000FF</color>
-    <color name="colorPrimaryDark">#000066</color>
+    <color name="colorPrimaryDark">#000037</color>
     <color name="colorAccent">#4D4DFF</color>
     <color name="colorSecondary">#00E0FF</color>
     <color name="colorOnSecondary">#DAFBFF</color>
@@ -13,5 +14,18 @@
     <color name="colorBlue">#002AFF</color>
     <color name="lightBlue">#E0E0FF</color>
     <color name="darkTeal">#16565F</color>
-    <color name="lightTeal">#88F0FF</color>
+    <color name="lightTeal">#CEF9FF</color>
+    <color name="bg_todo">#D2CBFA</color>
+    <color name="bg_menu">#F1E2FF</color>
+    <color name="bg_top">#000037</color>
+    <color name="bg_item">#FFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="colorGray">#D6D6D6</color>
+    <color name="colorHome">#007BFF</color>
+    <color name="colorSchool">#7E7100</color>
+    <color name="colorWork">#7300E6</color>
+    <color name="colorPersonal">#0E4C0E</color>
+    <color name="color5">#EF00FF</color>
+    <color name="color6">#37080D</color>
+
 </resources>

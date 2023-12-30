@@ -1,23 +1,17 @@
-package com.example.mytodo.ui.main
+package com.example.mytodo.ui.taskLists
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mytodo.database.repository.TaskRepository
+import com.example.mytodo.model.Category
 import com.example.mytodo.model.TaskModel
 import kotlinx.coroutines.launch
 
 class MainViewModel(
     private val userRepository: TaskRepository
 ) : ViewModel() {
-//    fun getAllUsers(): List<TaskModel> {
-//        viewModelScope.launch {
-//            return@launch userRepository.getAllTask()
-//        }
-//    }
-
-    fun getAllUsers(): LiveData<List<TaskModel>> {
-        return userRepository.getAllTask()
+    fun getAllCate(): List<Category> {
+        return userRepository.getAllCate()
     }
 
     fun getAllTaskLocal(): List<TaskModel> {
@@ -41,4 +35,5 @@ class MainViewModel(
             userRepository.deleteTask(user)
         }
     }
+
 }

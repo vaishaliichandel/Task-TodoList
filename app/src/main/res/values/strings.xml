@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">MyTodo</string>
+    <string name="app_name">My Todo</string>
     <string name="add_task">Add Task</string>
     <string name="add_sub_task">Add sub task</string>
     <string name="add_reminder">Add Reminder</string>
@@ -18,4 +18,8 @@
     <string name="title_activity_sub_task">SubTaskActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="long_press_and_drag_to_rearrange">Long press and drag to rearrange</string>
+    <string name="overdue">Overdue</string>
+    <string name="update_task">Update Task</string>
+    <string name="no">No</string>
 </resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.carousel.MaskableFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_5sdp"
+    android:foreground="?attr/selectableItemBackground"
+    app:shapeAppearance="?attr/shapeAppearanceCornerMedium">
+
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_120sdp"
+        tools:src="@drawable/ic_place_holder" />
+
+    <com.google.android.material.button.MaterialButton
+        style="?attr/materialIconButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginEnd="102dp"
+        app:icon="@drawable/ic_close" />
+</com.google.android.material.carousel.MaskableFrameLayout>
+
+

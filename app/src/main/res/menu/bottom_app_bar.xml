@@ -9,14 +9,14 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/rotation"
+        android:id="@+id/sort"
         android:icon="@drawable/ic_sort"
         android:title="@string/category"
         android:contentDescription="@string/category"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/dashboard"
+        android:id="@+id/category"
         android:icon="@drawable/ic_filter"
         android:title="@string/category"
         android:contentDescription="@string/category"

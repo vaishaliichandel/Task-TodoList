@@ -1,291 +1,300 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-            android:id="@+id/drag_handle"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_bottom_shit"
-            android:backgroundTint="@color/colorPrimaryDark"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:backgroundTint="@color/bg_item"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
-            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
-            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
-            app:boxCornerRadiusTopStart="@dimen/_10sdp"
-            app:boxStrokeColor="@color/colorPrimaryDark"
-            app:boxStrokeWidth="1dp"
-            app:boxStrokeWidthFocused="1dp"
-            app:hintEnabled="false"
-            app:layout_constraintTop_toBottomOf="@+id/drag_handle"
-            app:strokeWidth="1dp"
-            tools:layout_editor_absoluteX="16dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etTask"
+            <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+                android:id="@+id/drag_handle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/add_task"
-                android:maxLines="5"
-                android:textColorHint="@color/black"
-                android:textFontWeight="500"
-                android:textSize="@dimen/_11sdp" />
+                android:background="@drawable/bg_bottom_shit"
+                android:backgroundTint="@color/colorPrimaryDark"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:drawableEnd="@drawable/ic_pin"
-            android:visibility="gone"
-            app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
-            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
-            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
-            app:boxCornerRadiusTopStart="@dimen/_10sdp"
-            app:boxStrokeColor="@color/colorPrimaryDark"
-            app:boxStrokeWidth="1dp"
-            app:boxStrokeWidthFocused="1dp"
-            app:hintEnabled="false"
-            app:layout_constraintTop_toBottomOf="@+id/outlinedTextField"
-            tools:layout_editor_absoluteX="16dp"
-            tools:visibility="visible">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etSubTask"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/outlinedTextField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/add_sub_task"
-                android:paddingEnd="@dimen/_25sdp"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+                app:boxCornerRadiusTopStart="@dimen/_10sdp"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="1dp"
+                app:hintEnabled="false"
+                app:layout_constraintTop_toBottomOf="@+id/drag_handle"
+                app:strokeWidth="1dp"
+                tools:layout_editor_absoluteX="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etTask"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_task"
+                    android:maxLines="5"
+                    android:textColorHint="@color/black"
+                    android:textFontWeight="500"
+                    android:textSize="@dimen/_11sdp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/outlinedTextField2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawableEnd="@drawable/ic_pin"
+                android:visibility="gone"
+                app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+                app:boxCornerRadiusTopStart="@dimen/_10sdp"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="1dp"
+                app:hintEnabled="false"
+                app:layout_constraintTop_toBottomOf="@+id/outlinedTextField"
+                tools:layout_editor_absoluteX="16dp"
+                tools:visibility="visible">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSubTask"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_sub_task"
+                    android:paddingEnd="@dimen/_25sdp"
+                    android:textColorHint="@color/black"
+                    android:textFontWeight="500"
+                    android:textSize="@dimen/_11sdp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/icClose"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:visibility="gone"
+                app:icon="@drawable/ic_close"
+                app:iconTint="@color/colorPrimaryDark"
+                app:layout_constraintBottom_toBottomOf="@+id/outlinedTextField2"
+                app:layout_constraintEnd_toEndOf="@+id/outlinedTextField2"
+                app:layout_constraintTop_toTopOf="@+id/outlinedTextField2"
+                tools:visibility="visible" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mbStartDate"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="Start date"
+                android:paddingVertical="@dimen/_10sdp"
                 android:textColorHint="@color/black"
                 android:textFontWeight="500"
-                android:textSize="@dimen/_11sdp" />
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="1dp"
+                app:circularflow_radiusInDP=""
+                app:cornerRadius="@dimen/_7sdp"
+                app:icon="@drawable/ic_calendar"
+                app:iconGravity="start"
+                app:iconSize="@dimen/_20sdp"
+                app:iconTint="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toStartOf="@+id/mbEndDate"
+                app:layout_constraintStart_toStartOf="@+id/outlinedTextField"
+                app:layout_constraintTop_toBottomOf="@+id/outlinedTextField2" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mbEndDate"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:hint="End date"
+                android:paddingVertical="@dimen/_10sdp"
+                android:textColorHint="@color/black"
+                android:textFontWeight="500"
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="1dp"
+                app:cornerRadius="@dimen/_7sdp"
+                app:icon="@drawable/ic_calender_32"
+                app:iconGravity="start"
+                app:iconSize="@dimen/_20sdp"
+                app:iconTint="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="@+id/outlinedTextField"
+                app:layout_constraintStart_toEndOf="@+id/mbStartDate"
+                app:layout_constraintTop_toTopOf="@+id/mbStartDate"
+                app:strokeWidth="1dp" />
 
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/icClose"
-            style="?attr/materialIconButtonStyle"
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:visibility="gone"
-            app:icon="@drawable/ic_close"
-            app:iconTint="@color/colorPrimaryDark"
-            app:layout_constraintBottom_toBottomOf="@+id/outlinedTextField2"
-            app:layout_constraintEnd_toEndOf="@+id/outlinedTextField2"
-            app:layout_constraintTop_toTopOf="@+id/outlinedTextField2"
-            tools:visibility="visible" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/mbStartDate"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:hint="Start date"
-            android:paddingVertical="@dimen/_10sdp"
-            android:textColorHint="@color/black"
-            android:textFontWeight="500"
-            app:boxStrokeColor="@color/colorPrimaryDark"
-            app:boxStrokeWidth="1dp"
-            app:boxStrokeWidthFocused="1dp"
-            app:circularflow_radiusInDP=""
-            app:cornerRadius="@dimen/_7sdp"
-            app:icon="@drawable/ic_calendar"
-            app:iconGravity="start"
-            app:iconSize="@dimen/_20sdp"
-            app:iconTint="@color/colorPrimaryDark"
-            app:layout_constraintEnd_toStartOf="@+id/mbEndDate"
-            app:layout_constraintStart_toStartOf="@+id/outlinedTextField"
-            app:layout_constraintTop_toBottomOf="@+id/outlinedTextField2" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/mbEndDate"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:hint="End date"
-            android:paddingVertical="@dimen/_10sdp"
-            android:textColorHint="@color/black"
-            android:textFontWeight="500"
-            app:boxStrokeColor="@color/colorPrimaryDark"
-            app:boxStrokeWidth="1dp"
-            app:boxStrokeWidthFocused="1dp"
-            app:cornerRadius="@dimen/_7sdp"
-            app:icon="@drawable/ic_calender_32"
-            app:iconGravity="start"
-            app:iconSize="@dimen/_20sdp"
-            app:iconTint="@color/colorPrimaryDark"
-            app:layout_constraintEnd_toEndOf="@+id/outlinedTextField"
-            app:layout_constraintStart_toEndOf="@+id/mbStartDate"
-            app:layout_constraintTop_toTopOf="@+id/mbStartDate"
-            app:strokeWidth="1dp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/menu"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
-            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
-            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
-            app:boxCornerRadiusTopStart="@dimen/_10sdp"
-            app:boxStrokeColor="@color/colorPrimaryDark"
-            app:boxStrokeWidth="1dp"
-            app:boxStrokeWidthFocused="1dp"
-            app:hintEnabled="false"
-            app:layout_constraintEnd_toStartOf="@+id/mbAddCategory"
-            app:layout_constraintStart_toStartOf="@+id/mbStartDate"
-            app:layout_constraintTop_toBottomOf="@+id/mbStartDate">
-
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/tvCategory"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/menu"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/category"
-                android:inputType="none"
-                android:popupElevation="@dimen/_3sdp"
-                android:textColorHint="@color/black"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+                app:boxCornerRadiusTopStart="@dimen/_10sdp"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="1dp"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toStartOf="@+id/mbAddCategory"
+                app:layout_constraintStart_toStartOf="@+id/mbStartDate"
+                app:layout_constraintTop_toBottomOf="@+id/mbStartDate">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/tvCategory"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/category"
+                    android:inputType="none"
+                    android:popupElevation="@dimen/_3sdp"
+                    android:textColorHint="@color/black"
+                    android:textFontWeight="500"
+                    android:dropDownHeight="@dimen/_200sdp"
+                    android:textSize="@dimen/_11sdp"
+                    app:dropDownBackgroundTint="@color/lightBlue"
+                    app:simpleItemSelectedColor="@color/colorOnPrimary" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mbAddCategory"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add New"
+                android:textColor="@color/colorPrimaryDark"
                 android:textFontWeight="500"
                 android:textSize="@dimen/_11sdp"
-                app:dropDownBackgroundTint="@color/lightBlue"
-                app:simpleItemSelectedColor="@color/colorOnPrimary" />
+                android:visibility="gone"
+                app:icon="@drawable/ic_add"
+                app:layout_constraintBottom_toBottomOf="@+id/menu"
+                app:layout_constraintEnd_toEndOf="@+id/mbEndDate"
+                app:layout_constraintTop_toTopOf="@+id/menu" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/icAddDateTime"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/add_date_time"
+                android:minHeight="0dp"
+                android:padding="@dimen/_2sdp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="@dimen/_12sdp"
+                app:icon="@drawable/ic_notification"
+                app:iconPadding="@dimen/_5sdp"
+                app:iconTint="@color/colorPrimaryDark"
+                app:layout_constraintStart_toStartOf="@+id/menu"
+                app:layout_constraintTop_toBottomOf="@+id/menu" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/mbAddCategory"
-            style="?attr/materialIconButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add New"
-            android:textColor="@color/colorPrimaryDark"
-            android:textFontWeight="500"
-            android:textSize="@dimen/_11sdp"
-            android:visibility="gone"
-            app:icon="@drawable/ic_add"
-            app:layout_constraintBottom_toBottomOf="@+id/menu"
-            app:layout_constraintEnd_toEndOf="@+id/mbEndDate"
-            app:layout_constraintTop_toTopOf="@+id/menu" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/icAddSubTask"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="0dp"
+                android:padding="@dimen/_3sdp"
+                app:icon="@drawable/ic_add_sub_task"
+                app:iconSize="@dimen/_18sdp"
+                app:iconTint="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toStartOf="@+id/icCopyTask"
+                app:layout_constraintTop_toTopOf="@+id/icAddDateTime" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/icAddDateTime"
-            style="?attr/materialIconButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:hint="@string/add_date_time"
-            android:minHeight="0dp"
-            android:padding="@dimen/_2sdp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/colorPrimaryDark"
-            android:textSize="@dimen/_12sdp"
-            app:icon="@drawable/ic_notification"
-            app:iconPadding="@dimen/_5sdp"
-            app:iconTint="@color/colorPrimaryDark"
-            app:layout_constraintStart_toStartOf="@+id/menu"
-            app:layout_constraintTop_toBottomOf="@+id/menu" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/icCopyTask"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="0dp"
+                android:padding="@dimen/_3sdp"
+                app:icon="@drawable/ic_copy"
+                app:iconSize="@dimen/_18sdp"
+                app:iconTint="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toStartOf="@+id/icPasteTask"
+                app:layout_constraintTop_toTopOf="@+id/icAddDateTime" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/icAddSubTask"
-            style="?attr/materialIconButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="0dp"
-            android:padding="@dimen/_3sdp"
-            app:icon="@drawable/ic_add_sub_task"
-            app:iconSize="@dimen/_18sdp"
-            app:iconTint="@color/colorPrimaryDark"
-            app:layout_constraintEnd_toStartOf="@+id/icCopyTask"
-            app:layout_constraintTop_toTopOf="@+id/icAddDateTime" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/icPasteTask"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="0dp"
+                android:padding="@dimen/_3sdp"
+                app:icon="@drawable/ic_paste"
+                app:iconSize="@dimen/_18sdp"
+                app:iconTint="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toStartOf="@+id/icAddStar"
+                app:layout_constraintTop_toTopOf="@+id/icAddDateTime" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/icCopyTask"
-            style="?attr/materialIconButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="0dp"
-            android:padding="@dimen/_3sdp"
-            app:icon="@drawable/ic_copy"
-            app:iconSize="@dimen/_18sdp"
-            app:iconTint="@color/colorPrimaryDark"
-            app:layout_constraintEnd_toStartOf="@+id/icPasteTask"
-            app:layout_constraintTop_toTopOf="@+id/icAddDateTime" />
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/icAddStar"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/star_selector"
+                android:minHeight="0dp"
+                android:padding="@dimen/_3sdp"
+                app:buttonTint="@color/colorPrimaryDark"
+                app:layout_constraintBottom_toBottomOf="@+id/icPasteTask"
+                app:layout_constraintEnd_toStartOf="@+id/icPin"
+                app:layout_constraintTop_toTopOf="@+id/icPasteTask" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/icPasteTask"
-            style="?attr/materialIconButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="0dp"
-            android:padding="@dimen/_3sdp"
-            app:icon="@drawable/ic_paste"
-            app:iconSize="@dimen/_18sdp"
-            app:iconTint="@color/colorPrimaryDark"
-            app:layout_constraintEnd_toStartOf="@+id/icAddStar"
-            app:layout_constraintTop_toTopOf="@+id/icAddDateTime" />
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/icPin"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/pin_selector"
+                android:minHeight="0dp"
+                android:padding="@dimen/_3sdp"
+                app:buttonTint="@color/colorPrimaryDark"
+                app:layout_constraintBottom_toBottomOf="@+id/icAddStar"
+                app:layout_constraintEnd_toEndOf="@+id/menu"
+                app:layout_constraintTop_toTopOf="@+id/icAddStar" />
 
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/icAddStar"
-            style="?attr/materialIconButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@drawable/star_selector"
-            android:minHeight="0dp"
-            android:padding="@dimen/_3sdp"
-            app:buttonTint="@color/colorPrimaryDark"
-            app:layout_constraintBottom_toBottomOf="@+id/icPasteTask"
-            app:layout_constraintEnd_toStartOf="@+id/icPin"
-            app:layout_constraintTop_toTopOf="@+id/icPasteTask" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/createTask"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:padding="@dimen/_12sdp"
+                android:text="@string/create_task"
+                android:textColor="@color/white"
+                android:textFontWeight="600"
+                app:backgroundTint="@color/colorPrimaryDark"
+                app:cornerRadius="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/mbAddCategory"
+                app:layout_constraintStart_toStartOf="@+id/menu"
+                app:layout_constraintTop_toBottomOf="@+id/icAddSubTask" />
 
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/icPin"
-            style="?attr/materialIconButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@drawable/pin_selector"
-            android:minHeight="0dp"
-            android:padding="@dimen/_3sdp"
-            app:buttonTint="@color/colorPrimaryDark"
-            app:layout_constraintBottom_toBottomOf="@+id/icAddStar"
-            app:layout_constraintEnd_toEndOf="@+id/menu"
-            app:layout_constraintTop_toTopOf="@+id/icAddStar" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/createTask"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:padding="@dimen/_12sdp"
-            android:text="@string/create_task"
-            android:textColor="@color/white"
-            android:textFontWeight="600"
-            app:backgroundTint="@color/colorPrimaryDark"
-            app:cornerRadius="@dimen/_10sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/mbAddCategory"
-            app:layout_constraintStart_toStartOf="@+id/menu"
-            app:layout_constraintTop_toBottomOf="@+id/icAddSubTask" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

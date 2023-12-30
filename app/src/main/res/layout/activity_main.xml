@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_todo">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.main.MainActivity">
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_60sdp"
-            android:background="@color/colorPrimaryDark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/mtvWelcome"
@@ -22,100 +22,262 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:textColor="@color/white"
+            android:textColor="@color/colorWhite"
             android:textFontWeight="500"
             android:textSize="@dimen/_16sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Good Morning" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTaskSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
-            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
-            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
-            app:boxCornerRadiusTopStart="@dimen/_10sdp"
-            app:boxStrokeColor="@color/colorPrimaryDark"
-            app:boxStrokeWidth="1dp"
-            app:hintEnabled="false"
-            app:layout_constraintTop_toBottomOf="@+id/mtvTime"
-            app:strokeColor="@color/colorSecondary"
-            tools:layout_editor_absoluteX="16dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etTask"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_search"
-                android:hint="@string/search_task"
-                android:padding="@dimen/_7sdp"
-                android:textFontWeight="500"
-                android:textSize="@dimen/_11sdp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/mtvTime"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/mtvWelcome"
+            android:layout_alignStart="@+id/mtvWelcome"
             android:layout_marginTop="@dimen/_5sdp"
-            android:textColor="@color/white"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:textColor="@color/colorWhite"
             android:textFontWeight="500"
             android:textSize="@dimen/_14sdp"
-            app:layout_constraintStart_toStartOf="@+id/mtvWelcome"
-            app:layout_constraintTop_toBottomOf="@+id/mtvWelcome"
             tools:text="Good Morning" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/icSearch"
+            style="?attr/materialIconButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_5sdp"
+            app:icon="@drawable/ic_search"
+            app:iconSize="@dimen/_25sdp"
+            app:iconTint="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="@+id/mtvTime"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/mtvWelcome" />
+
+
+    </RelativeLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvTaskProgress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/bg_layout"
+        android:backgroundTint="@color/darkTeal"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_5sdp"
+        android:text="0/1 tasks completed"
+        android:textColor="@color/white"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_11sdp"
+        app:circularflow_defaultRadius="@dimen/_5sdp"
+        app:layout_constraintCircleRadius="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlinedTaskSearch"
+        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:visibility="gone"
+        app:boxBackgroundColor="@color/bg_top"
+        app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+        app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+        app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+        app:boxCornerRadiusTopStart="@dimen/_10sdp"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="1dp"
+        app:hintEnabled="false"
+        app:layout_constraintTop_toBottomOf="@+id/tvTaskProgress"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:strokeColor="@color/colorSecondary"
+        tools:layout_editor_absoluteX="16dp"
+        tools:visibility="visible">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_close"
+            android:drawablePadding="@dimen/_10sdp"
+            android:drawableTint="@color/colorOnSecondary"
+            android:hint="@string/search_task"
+            android:padding="@dimen/_7sdp"
+            android:textColorHint="@color/colorOnSecondary"
+            android:textFontWeight="500"
+            android:textSize="@dimen/_11sdp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <FrameLayout
+        android:id="@+id/llTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@drawable/bg_tab_layout"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/_3sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTaskSearch">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/select"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_layout"
+                android:backgroundTint="@color/darkTeal"
+                android:paddingVertical="@dimen/_7sdp"
+                android:text="" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/bActive"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Active"
+                android:textColor="@color/white"
+                android:textFontWeight="500" />
+
+            <TextView
+                android:id="@+id/bDone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Done"
+                android:textColor="@color/black"
+                android:textFontWeight="500" />
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/llNotFound"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llTab">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:src="@drawable/ic_no_task" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="No Tasks Found"
+            android:textColor="@color/black"
+            android:textFontWeight="600"
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:alpha="0.7"
+            android:gravity="center"
+            android:text="No Tasks in this category. Click + to create new tasl"
+            android:textColor="@color/black"
+            android:textFontWeight="500"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llTab"
+        tools:visibility="gone">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTask"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="@dimen/_5sdp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/fabAdd"
-            app:layout_constraintTop_toBottomOf="@+id/outlinedTaskSearch"
+
             tools:listitem="@layout/list_item_task" />
+    </LinearLayout>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/mtvAddTask"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:text="@string/add_task"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintBottom_toBottomOf="@+id/fabAdd"
-            app:layout_constraintEnd_toStartOf="@+id/fabAdd"
-            app:layout_constraintTop_toTopOf="@+id/fabAdd" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mtvAddTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:text="@string/add_task"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/fabAdd"
+        app:layout_constraintEnd_toStartOf="@+id/fabAdd"
+        app:layout_constraintTop_toTopOf="@+id/fabAdd" />
 
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottomAppBar"
-            style="@style/Widget.Material3.BottomAppBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:menu="@menu/bottom_app_bar"
-            tools:ignore="BottomAppBar" />
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        style="@style/Widget.Material3.BottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/bg_top"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_app_bar"
+        tools:ignore="BottomAppBar" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:layout_marginBottom="@dimen/_12sdp"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:contentDescription="@string/add_task"
-            android:src="@drawable/ic_add"
-            android:tint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:tint="@color/white" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:backgroundTint="@color/bg_menu"
+        android:contentDescription="@string/add_task"
+        android:src="@drawable/ic_add"
+        android:tint="@color/bg_top"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/bg_top" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

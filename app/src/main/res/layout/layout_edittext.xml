@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.textview.MaterialTextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tvName"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <EditText
-        android:id="@+id/outlinedTextField"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_gravity="top"
-        android:layout_margin="@dimen/_12sdp"
-        android:background="@drawable/bg_edittext"
-        android:gravity="top"
-        android:hint="@string/add_task"
-        android:padding="@dimen/_10sdp"
-        android:textSize="@dimen/_11sdp"
-        app:boxStrokeWidth="2dp"
-        app:layout_constraintTop_toBottomOf="@+id/drag_handle"
-        app:strokeColor="@color/colorSecondary" />
-
-
-</LinearLayout>
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/_5sdp"
+    android:drawableTint="@color/colorGray"
+    android:drawableStart="@drawable/ic_dot"
+    android:drawablePadding="@dimen/_10sdp"
+    android:textColor="@color/black"
+    android:textFontWeight="500"
+    android:textSize="@dimen/_12sdp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/icMore"
+    app:layout_constraintStart_toEndOf="@+id/icDot"
+    app:layout_constraintTop_toTopOf="@+id/icDot"
+    tools:text="Home" />
